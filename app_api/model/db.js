@@ -16,3 +16,4 @@ mongoose.connection.on('error',function(err){
 });
 
 require('./products');
+require('./user');

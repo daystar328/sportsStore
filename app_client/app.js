@@ -18,6 +18,8 @@
             controller:'cartSummaryCtrl'
         }).when('/complete',{
             templateUrl:'/complete/complete.html'
+        }).when('/register',{
+            templateUrl:'/register/register.html'
         })
         .otherwise({redirectTo:'/'});
     }]);
