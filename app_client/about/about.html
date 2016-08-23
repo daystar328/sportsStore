@@ -1,0 +1,25 @@
+<navigation></navigation>
+<div class="row">
+    <div class="container">
+        <form name="practiceForm" novalidate>
+            <div class="form-group">
+                <label for="userName" class="control-label">Name</label>
+                <input type="text" class="form-control" name="userName" ng-model="userName" placeholder="please input your name" required>
+            </div>
+            
+            <div ng-show="practiceForm.userName.$error.required && practiceForm.userName.$touched">
+                <span class="label label-danger">Please enter a name</span>
+            </div>
+            <div class="form-group">
+                <label for="userMail" class="control-label">E-Mail</label>
+                <input type="email" class="form-control" id="userMail" placeholder="Mail Address" required>
+            </div>
+            <div class="form-group">
+                <label for="userComment" class="control-label">Comment :</label>
+                <textarea rows="12" cols="50" id="userComment" class="form-control"></textarea>
+            </div>
+            <button type="button" ng-disabled="practiceForm.$invalid">Submit</button>
+        </form>
+        
+    </div>
+</div>

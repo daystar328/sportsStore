@@ -1,0 +1,9 @@
+(function(){
+    angular.module('sportsStore')
+    .directive('navigation',function(){
+       return{
+           restrict:'EA',
+           templateUrl:'/common/directive/navigation/navigation.html'
+       };
+    });
+})();

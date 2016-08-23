@@ -1,0 +1,25 @@
+<style>
+    span.error{color:red;font-weight: bold}
+</style>
+<navigation></navigation>
+<div class="row">
+    <div class="container">
+        <h2>Checkout Now!</h2>
+        <h3>Please enter shipping details</h3>
+        <form name="shippingForm">
+            <div class="form-group">
+                <label>Name:</label>
+                <input type="text" class="form-control" name="shippingName" placeholder="Please enter your name" required>
+            </div>
+            <span class="error" ng-show="shippingForm.name.$error.required && shippingForm.name.$touched">user name required!</span>
+            <div class="form-group">
+                <label>Address:</label>
+                <input type="text" class="form-control" name="shippingAddress" placeholder="Please enter Address" required>
+            </div>
+            <span class="error" ng-show="shippingForm.shippingAddress.$error.required && shippingForm.shippingAddress.$touched">Address required!</span>
+            <div class="text-center">
+                <button class="btn btn-primary" ng-click="sendOrder()">Complete Order</button>
+            </div>
+        </form>
+    </div>
+</div>

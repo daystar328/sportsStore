@@ -1,0 +1,33 @@
+<navigation></navigation>
+<h2>Your Cart</h2>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Quantity</th>
+            <th>Item</th>
+            <th>Price</th>
+            <th>Subtotal</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr ng-repeat="item in cartItems">
+            <td>{{item.count}}</td>
+            <td>{{item.name}}</td>
+            <td>{{item.price}}</td>
+            <td>{{item.count*item.price | currency}}</td>
+            <td>
+                <button type="button" class="btn btn-danger" ng-click="remove(item)">Remove</button>
+            </td>
+        </tr>
+    </tbody>
+    <tfoot>
+        <tr>
+            <td colspan="3" class="text-right">Total:</td>
+            <td>{{total() | currency}}</td>
+        </tr>
+    </tfoot>
+</table>
+<div class="text-center">
+    <a type="button" class="btn btn-primary" href="#/products">Continue Shopping</a>
+    <a type="button" class="btn btn-primary" href="#/placeorder">Place Order Now</a>
+</div>

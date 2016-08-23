@@ -1,0 +1,24 @@
+(function(){
+    angular.module('sportsStore',['ngRoute'])
+    .config(['$routeProvider','$locationProvider',function($routeProvider,$locationProvider){
+        $routeProvider
+        .when('/',{
+            templateUrl:'/home/home.html',
+            controller:'homeCtrl'
+        })
+        .when('/about',{
+            templateUrl:'/about/about.html'
+        })
+        .when('/checkout',{
+            templateUrl:'/checkout/checkout.html',
+            controller:'cartSummaryCtrl'
+        })
+        .when('/placeorder',{
+            templateUrl:'/placeorder/placeorder.html',
+            controller:'cartSummaryCtrl'
+        }).when('/complete',{
+            templateUrl:'/complete/complete.html'
+        })
+        .otherwise({redirectTo:'/'});
+    }]);
+})();
