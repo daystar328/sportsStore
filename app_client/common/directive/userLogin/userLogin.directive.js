@@ -3,7 +3,8 @@
     .directive('userLogin',function(){
         return {
             restrict:'EA',
-            templateUrl:"/common/directive/userLogin/userLogin.html"
+            templateUrl:"/common/directive/userLogin/userLogin.html",
+            controller:"loginCtrl"
         };
     });
 })();
