@@ -1,3 +1,4 @@
+<navigation></navigation>
 <div class="row">
     <div class="container">
         <div class="jumbotron">
@@ -6,28 +7,28 @@
         <form name="registerForm" novalidate>
             <div class="form-group">
                 <label>Name:</label>
-                <input type="text" name="memberName" ng-model="memberName" class="form-control" placeholder="please enter your name" required>
+                <input type="text" name="memberName1" ng-model="user.name" class="form-control" placeholder="please enter your name" required>
             </div>
             <div class="form-group">
                 <label>E-mail:</label>
-                <input type="email" name="memberEmail" ng-model="memberEmail" class="form-control" placeholder="please enter your e-mail" required>
+                <input type="email" name="memberEmail1" ng-model="user.email" class="form-control" placeholder="please enter your e-mail" required>
             </div>
             <div class="form-group">
                 <label>Nick Name:</label>
-                <input type="text" class="form-control" name="memberNickname" required>
+                <input type="text" class="form-control" name="memberNickname" ng-model="user.nickname" required>
             </div>
             <div class="form-group">
                 <label>Password:</label>
-                <input type="password" class="form-control" ng-model="memberPassword" name="memberPassword" required>
+                <input type="password" class="form-control" ng-model="user.password" name="memberPassword" required>
             </div>
             <div class="form-group">
                 <label>re-confirm Password</label>
-                <input type="password" class="form-control" ng-model="memberReconfirmPassword" name="reconfirmPassword" required>
+                <input type="password" class="form-control" ng-model="user.confirmPassword" name="reconfirmPassword" required>
                 <span style="color:red" ng-show="registerForm.reconfirmPassword.$touched && !confirmPassword()">password mismatch!</span>
             </div>
         </form>
         <div>
-            <button type="button" class="btn btn-primary" ng-click="register()" ng-disabled="registerForm.$invalid">Submit</button>
+            <button type="button" class="btn btn-primary" ng-click="formRegister()" ng-disabled="registerForm.$invalid">Submit</button>
             <button type="button" class="btn btn-warning" ng-click="clearAll()">Clear All</button>
         </div>    
     </div>

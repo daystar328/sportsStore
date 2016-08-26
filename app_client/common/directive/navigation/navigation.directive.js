@@ -3,7 +3,8 @@
     .directive('navigation',function(){
        return{
            restrict:'EA',
-           templateUrl:'/common/directive/navigation/navigation.html'
+           templateUrl:'/common/directive/navigation/navigation.html',
+           controller:'naviCtrl'
        };
     });
 })();

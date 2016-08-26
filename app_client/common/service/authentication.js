@@ -5,15 +5,16 @@
             return $window.localStorage['sportsStore'];
         };
         
-        var saveToken = function(toke){
+        var saveToken = function(token){
             $window.localStorage['sportsStore'] = token;
         };
         
         var isLoggin = function(){
             var token = getToken();
+            console.log('getToken: '+token);
             if(token){
                 var payload = JSON.parse($window.atob(token.split('.')[1]));
-                return payload.exp > date.now()/1000;
+                return payload.exp > Date.now()/1000;
             }else{
                 return false;
             }
@@ -41,11 +42,14 @@
         var login = function(user){
             $http.post('/api/login',user).success(function(data){
                 saveToken(data.token);
+                $window.location.reload();
+            }).error(function(err){
+                console.log(err);
             });
         };
         
         var logout = function(){
-            $window.localStorage.removeItem['sportsStore'];
+            localStorage.removeItem('sportsStore');
         };
         
         return {

@@ -1,5 +1,5 @@
 (function(){
-    angular.module('sportsStore',['ngRoute'])
+    angular.module('sportsStore',['ngRoute','ui.bootstrap'])
     .config(['$routeProvider','$locationProvider',function($routeProvider,$locationProvider){
         $routeProvider
         .when('/',{
@@ -17,9 +17,11 @@
             templateUrl:'/placeorder/placeorder.html',
             controller:'cartSummaryCtrl'
         }).when('/complete',{
-            templateUrl:'/complete/complete.html'
+            templateUrl:'/complete/complete.html',
+            controller:'completeCtrl'
         }).when('/register',{
-            templateUrl:'/register/register.html'
+            templateUrl:'/register/register.html',
+            controller:'registerCtrl'
         })
         .otherwise({redirectTo:'/'});
     }]);

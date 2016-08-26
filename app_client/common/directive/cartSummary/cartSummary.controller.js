@@ -1,6 +1,6 @@
 (function(){
     angular.module('sportsStore')
-    .controller('cartSummaryCtrl',['$scope','cart','$http','$location',function($scope,cart,$http,$location){
+    .controller('cartSummaryCtrl',['$scope','cart','$http','$location','authentication','$window',function($scope,cart,$http,$location,authentication,$window){
                 var cartData = cart.getProducts();
                 $scope.cartItems = cartData;
                 $scope.total = function(){
@@ -27,17 +27,23 @@
                 };
         
                 $scope.sendOrder = function(){
+                    $scope.clearOrder = [];
                     var order = {};
-                    order.item = $scope.cartItems;
-                    order.name = $scope.shippingName;
-                    order.address = $scope.shippingAddress;
+                    order.item = angular.copy($scope.cartItems);
+                    order.name = angular.copy($scope.shippingName);
+                    order.address = angular.copy($scope.shippingAddress);
                     $http.post('/api/sendorder',order).success(function(data){
-                        console.log(data);
-                        cartItem = [];
+                        console.log("shopping item :"+data);
+                        $scope.cartItems = angular.copy($scope.clearOrder);
                        $location.path('/complete');
                     }).error(function(err){
                         console.log(err);
                     });
-                }
+                };
+                
+                $scope.logout = function(){
+                    authentication.logout();
+                    $window.location.reload();
+                };
             }]);
 })();

@@ -3,8 +3,7 @@
     .controller('loginModalCtrl',['$uibModalInstance','$scope',function($uibModalInstance,$scope){
         var results = {};
         $scope.userLogin = function(){
-            results.email = angular.copy($scope.loginName);
-            results.password =angular.copy($scope.loginPassword);
+            results = angular.copy($scope.user);
             $uibModalInstance.close(results);
         };
         

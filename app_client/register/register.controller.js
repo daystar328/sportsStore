@@ -5,18 +5,20 @@
         var confirmPassword = function(){
             return $scope.memberPassword === $scope.memberReconfirmPassword;
         };
-        
-        $scope.register = function(){
-            member.name = angular.copy($scope.memberName);
-            member.email = angular.copy($scope.memberEmail);
-            memebr.password = angular.copy($scope.memberPassword);
+        $scope.master = {};
+        $scope.formRegister = function(){
+            member = angular.copy($scope.user);
+            //member.email = angular.copy($scope.user.email);
+            //member.password = angular.copy($scope.user.password);
+            //member.nickname = angular.copy($scope.user.nickname);
             authentication.register(member);
+            console.log(member);
         };
         
         $scope.clearAll = function(){
-            $scope.memberName = "";
-            $scope.memberEmail = "";
+            $scope.user = angular.copy($scope.master);
+            console.log('clearFrom');
             
-        }
+        };
     }]);
 })();
