@@ -2,10 +2,12 @@
     angular.module('sportsStore')
     .service('authentication',['$window','$http',function($window,$http){
         var getToken = function(){
+            console.log('local storage :'+$window.localStorage['sportsStore']);
             return $window.localStorage['sportsStore'];
         };
         
         var saveToken = function(token){
+            console.log('save token :'+token);
             $window.localStorage['sportsStore'] = token;
         };
         
@@ -13,6 +15,7 @@
             var token = getToken();
             console.log('getToken: '+token);
             if(token){
+                console.log('token is :'+token);
                 var payload = JSON.parse($window.atob(token.split('.')[1]));
                 return payload.exp > Date.now()/1000;
             }else{
