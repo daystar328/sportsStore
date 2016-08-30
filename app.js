@@ -8,7 +8,7 @@ var passport = require('passport');
 require('./app_api/model/db');
 require('./config/passport');
 var routes = require('./routes/index');
-
+var adminRoute = require('./adminRoute/index');
 var app = express();
 
 // view engine setup
@@ -26,6 +26,7 @@ app.use(express.static(path.join(__dirname, 'app_client')));
 app.use(express.static(path.join(__dirname,'admin')));
 app.use(passport.initialize());
 app.use('/api', routes);
+app.use('/adm',adminRoute);
 app.use('/admin',function(req,res){
   res.sendFile(path.join(__dirname,'admin','index.html'));
 });

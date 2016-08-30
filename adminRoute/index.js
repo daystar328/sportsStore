@@ -1,9 +1,9 @@
-var express = express();
-var route = express.route();
+var express = require('express');
+var router = express.Router();
 var mongoose = require('mongoose');
 var Users = mongoose.model('Users');
 
-route.post('/login',function(req,res){
+router.post('/login',function(req,res){
     console.log('adm login data :'+req.body);
     if(!req.body.name || !req.body.password){
         res.status(401);
@@ -25,4 +25,6 @@ route.post('/login',function(req,res){
         
     })(req,res);
     
-})
+});
+
+module.exports = router;

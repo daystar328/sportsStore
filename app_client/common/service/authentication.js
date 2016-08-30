@@ -1,6 +1,6 @@
 (function(){
     angular.module('sportsStore')
-    .service('authentication',['$window','$http',function($window,$http){
+    .service('authentication',['$window','$http','$location',function($window,$http,$location){
         var getToken = function(){
             console.log('local storage :'+$window.localStorage['sportsStore']);
             return $window.localStorage['sportsStore'];
@@ -36,7 +36,9 @@
         
         var register = function(user){
             $http.post('/api/register',user).success(function(data){
+                console.log('save token :'+data.token);
                 saveToken(data.token);
+                $location.path('/');
             }).error(function(err){
                 console.log(err);
             });
@@ -55,13 +57,15 @@
             localStorage.removeItem('sportsStore');
         };
         
+            
+        
         return {
             getToken:getToken,
             saveToken:saveToken,
             isLoggin:isLoggin,
             register:register,
             login:login,
-            logout:logout
+            logout:logout,
         };
     }]);
 })();

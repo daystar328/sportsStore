@@ -4,6 +4,7 @@
         $routeProvider
         .when('/login',{
             templateUrl:'login.html',
+            controller:'admLoginCtrl'
         })
         .when('/main',{
             templateUrl:'main.html'

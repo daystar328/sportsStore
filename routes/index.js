@@ -52,10 +52,11 @@ router.post('/register',function(req,res){
         users.setPassword(req.body.password);
         users.save(function(err){
             if(err){
-                console.log(err);
+                console.log('mongoose error :'+err);
             }else{
+                var token = users.generateJwt();
                 res.status(200);
-                res.json({message:"register success"});
+                res.json({"token":token});
             }
         });
 });
@@ -89,6 +90,26 @@ router.post('/login',function(req,res){
         }
     })(req,res);
     
+});
+
+router.post('/checkmail',function(req,res){
+    console.log('checking mail address');
+    Users.findOne({email:req.body.mailAddress},function(err,mailAddress){
+        if(err){
+            res.status(401);
+            console.log(err);
+            return;
+        }
+        if(mailAddress){
+            res.status(200)
+            console.log('This mail already been used');
+            res.json({"exist":true});
+        }else{
+            res.status(200);
+            console.log('valid mail address');
+            res.json({"exist":false});
+        }
+    });
 });
 
 module.exports = router;
